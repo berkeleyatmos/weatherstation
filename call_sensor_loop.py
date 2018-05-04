@@ -1,5 +1,8 @@
+#!/usr/bin/env python3
+
 import pigpio
 import DHT22
+import os
 from time import sleep
 
 # instantiate a pi object
