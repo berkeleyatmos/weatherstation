@@ -12,7 +12,7 @@ Add the following line to your `~/.ssh/config` so that you can SSH to the Pi wit
 
 ```bash
 Host weatherstation
-	HostName 10.142.93.19
+	HostName 10.142.21.24
 	User pi
 ```
 
