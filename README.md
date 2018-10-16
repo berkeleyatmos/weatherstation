@@ -7,7 +7,7 @@ The following README will serve as an introductory guide on how to use the stati
 
 # Setup
 
-On Airbears2 the station's IP address is 10.142.93.19. 
+On Airbears2 the station's IP address is 10.142.21.24. 
 Add the following line to your `~/.ssh/config` so that you can SSH to the Pi with just `ssh weatherstation`:
 
 ```bash
