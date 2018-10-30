@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 ################################################################################
 # Berkeley Atmos Club (ASAB) Weather Station Code
@@ -7,8 +7,8 @@
 # them to read the sensors on the Pi. We then process the data.
 ################################################################################
 
+import libs
 from libs.sensors_lib import BME280_read, DHT22_read
-import pandas as pd
 
 ### Read the sensors
 temperature1, pressure = BME280_read()
@@ -17,5 +17,3 @@ temperature2, humidity = DHT22_read()
 # Print values
 print("From BME280: {} K, {} hPa".format(temperature1, pressure))
 print("From DHT22:  {} K, {}% RH".format(temperature2, humidity))
-
-# Save data

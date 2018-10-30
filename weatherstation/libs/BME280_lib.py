@@ -124,7 +124,8 @@ class BME280(object):
         self._filter = filter
         # Create I2C device.
         if i2c is None:
-            import Adafruit_GPIO.I2C as I2C
+            import Adafruit_GPIO.I2C as I2C 	#	Attempting to make fancy organization
+            #import libs.Adafruit_GPIO.I2C as I2C
             i2c = I2C
         # Create device, catch permission errors
         try:

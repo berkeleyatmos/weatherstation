@@ -6,8 +6,8 @@
 # This is the main library: it contains functions that we can call in another 
 # file to interact with the sensors on the Pi.
 ################################################################################
-import BME280_lib
-import DHT22_lib
+import libs.BME280_lib as BME280_lib
+import libs.DHT22_lib as DHT22_lib
 import pigpio
 import os
 from time import sleep
