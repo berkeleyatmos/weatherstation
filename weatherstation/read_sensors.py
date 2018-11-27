@@ -7,14 +7,17 @@
 # them to read the sensors on the Pi. We then process the data.
 ################################################################################
 
-# import libs
-# from libs.sensors_lib import BME280_read, DHT22_read
+import libs
+from libs.sensors_lib import BME280_read, DHT22_read
 
-# ### Read the sensors
-# temperature1, pressure = BME280_read()
-# temperature2, humidity = DHT22_read()
+### Read the sensors
+temperature1, pressure = BME280_read()
+temperature2, humidity = DHT22_read()
 
-# # Print values
-# print("From BME280: {} K, {} hPa".format(temperature1, pressure))
-# print("From DHT22:  {} K, {}% RH".format(temperature2, humidity))
-print(69)
+### Print values
+# print("From BME280: {} C, {} hPa".format(temperature1, pressure))
+# print("From DHT22:  {} C, {}% RH".format(temperature2, humidity))
+
+# The BME has better temperature sensing -- use that.
+with open("current_measurements.txt", "w") as f:
+    f.write("{} {} {}\n".format(temperature1, pressure, humidity))
