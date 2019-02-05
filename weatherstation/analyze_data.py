@@ -12,10 +12,12 @@ import matplotlib.pyplot as plt
 data = np.loadtxt("data.txt")
 time = data[:, 0]
 temp = data[:, 1]
-pres = data[:, 2]
-humi = data[:, 3]
+pres = data[:, 3]
+humi = data[:, 4]
+#pres = data[:, 2]
+#humi = data[:, 3]
 
-humi[np.where(humi == -999.0)] = 0.0
+humi[np.where(humi == -999.0)] = np.nan
 
 f, ax = plt.subplots(1, figsize=(8, 5))
 ax.plot(temp, 'b')

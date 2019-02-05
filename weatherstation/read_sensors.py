@@ -16,4 +16,4 @@ temperature2, humidity = DHT22_read()
 
 # The BME has better temperature sensing -- use that.
 with open("current_measurements.txt", "w") as f:
-    f.write("{} {} {}\n".format(temperature1, pressure, humidity))
+    f.write("{} {} {} {}\n".format(temperature1, temperature2, pressure, humidity))

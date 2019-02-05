@@ -28,7 +28,14 @@ See https://stackoverflow.com/questions/16040128/hook-up-raspberry-pi-via-ethern
 
 Go to the directory you wish to download this repo in, and type `git clone https://github.com/berkeleyatmos/weatherstation.`
 
+## Setting Up Your Pi
 
+Here we will keep some notes for starting up a new pi (because presumably we will be doing this multiple times).
+Right now I will just post a few notes of things that are not obvious---later it will be more structured.
+
+1. For some reason, you have to do `sudo apt install libatlas-base-dev` for python3 numpy to work. Don't ask.
+2. Add pigpiod here.
+3. ...
 
 # To Do
 

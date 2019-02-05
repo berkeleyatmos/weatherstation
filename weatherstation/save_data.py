@@ -11,22 +11,26 @@ import datetime as dt
 import os
 import time
 
-with open("data.txt", "a") as f:
+fname = "data.txt"
+time_interval = 1
+with open(fname, "a") as f:
 	while True:
 	
 		os.system("./read_sensors.py")
 		
 		output = np.loadtxt("current_measurements.txt")
-		temperature = output[0]
-		pressure = output[1]
-		humidity = output[2]
+		temperature1 = output[0]
+		temperature2 = output[1]
+		pressure = output[2]
+		humidity = output[3]
 		
 		current_date = dt.datetime.now()
 		#date = current_date.strftime("%Y/%m/%d %H:%m:%S")
 		date = current_date.strftime("%H%m%S")
 		
-		#print("{} | {} °C | {} hPa | {} % RH".format(date, temperature, pressure, humidity))
+		data_string = "{} {} {} {} {}".format(date, temperature1, temperature2, pressure, humidity)
+
+		print("Writing `{}` to {}.".format(data_string, fname))
+		f.write(data_string + "\n")
 	
-		f.write("{} {} {} {}\n".format(date, temperature, pressure, humidity))
-	
-		time.sleep(5)
+		time.sleep(time_interval)
