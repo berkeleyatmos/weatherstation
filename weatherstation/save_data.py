@@ -25,8 +25,8 @@ with open(fname, "a") as f:
 		humidity = output[3]
 		
 		current_date = dt.datetime.now()
-		#date = current_date.strftime("%Y/%m/%d %H:%m:%S")
-		date = current_date.strftime("%H%m%S")
+		#date = current_date.strftime("%Y/%m/%d %H:%M:%S")
+		date = current_date.strftime("%H%M%S")
 		
 		data_string = "{} {} {} {} {}".format(date, temperature1, temperature2, pressure, humidity)
 

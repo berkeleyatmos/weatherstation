@@ -22,11 +22,13 @@ For obvious reasons, we will not post the password.
 
 ## With Ethernet
 
-See https://stackoverflow.com/questions/16040128/hook-up-raspberry-pi-via-ethernet-to-laptop-without-router.
+See https://stackoverflow.com/questions/16040128/hook-up-raspberry-pi-via-ethernet-to-laptop-without-router maybe?
 
 # Using This Repo
 
 Go to the directory you wish to download this repo in, and type `git clone https://github.com/berkeleyatmos/weatherstation.`
+The `weatherstation` folder contains libraries and scripts to gather data.
+The `misc` folder is for miscellaneous files we need to add to each weatherstation during setup.
 
 ## Setting Up Your Pi
 
@@ -34,7 +36,7 @@ Here we will keep some notes for starting up a new pi (because presumably we wil
 Right now I will just post a few notes of things that are not obvious---later it will be more structured.
 
 1. For some reason, you have to do `sudo apt install libatlas-base-dev` for python3 numpy to work. Don't ask.
-2. Add pigpiod here.
+2. Put `misc/atmos_startup_commands.sh` in `etc/init.d/`  #!FIXME: this did nothing... 
 3. ...
 
 # To Do
