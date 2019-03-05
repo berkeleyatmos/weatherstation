@@ -12,8 +12,10 @@ import os
 import time
 
 fname = "data.txt"
-time_interval = 1
+time_interval = 2 #seems to work best at 2 or 3
 with open(fname, "a") as f:
+    prev_temp2 = -999
+    prev_humidity = -999
     while True:
         os.system("./read_sensors.py")
         
@@ -23,6 +25,14 @@ with open(fname, "a") as f:
         pressure = output[2]
         humidity = output[3]
         
+        #Correct any erroneous readings
+        if temperature2 == -999:
+            temperature2 = prev_temp2
+            humidity = prev_humidity
+        else:
+            prev_temp2 = temperature2
+            prev_humidity = humidity
+    
         current_date = dt.datetime.now()
         #date = current_date.strftime("%Y/%m/%d %H:%M:%S")
         date = current_date.strftime("%H%M%S")
