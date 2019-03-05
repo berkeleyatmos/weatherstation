@@ -41,8 +41,14 @@ Right now I will just post a few notes of things that are not obvious---later it
 
 # To Do
 
-- Clean up code. Plan: either make a WeatherStation class or define useful functions in one file. Import this file to use the functions or class so that interaction with sensors is clean and simple.
+- Fill out this README fully, especially the _Setting Up Your Pi_ section.
 
-- Create script for automatic updates that save to a database. Perhaps use OCF's free MySQL access for this.
+- Create script for automatic updates that save to a database. Ideas for now:
+
+	- Use OCF's free MySQL access 
+	
+	- Hash the password
+
+	- Modify `save_data.py` to upload data to MySQL
 
 - Make a simple website for the station to visualize the data. 
