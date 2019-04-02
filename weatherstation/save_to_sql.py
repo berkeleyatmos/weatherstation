@@ -13,8 +13,12 @@ fname = "data.txt"
 time_interval = 1
 sql_hostname = 'mysql'
 sql_username = 'ankurmahesh'
-#TODO: read the sql password from a local file instead of hardcoding the string
-sql_password = 'b1C4ZcoJR8lTXMm3EocB46ek'
+
+with open("sql_password") as f:
+    sql_password = f.read()
+
+with open("ssh_password") as f:
+    ssh_password = f.read()
 sql_main_database = 'ankurmahesh'
 sql_port = 3306
 ssh_host = 'ssh.ocf.berkeley.edu'
@@ -36,11 +40,10 @@ while True:
     
 
     #TODO: it might be bad to open ssh connection once every time_interval seconds
-    #TODO: read the ssh password from a local file instead of hardcoding the string
     with SSHTunnelForwarder(
             (ssh_host, ssh_port),
             ssh_username=ssh_user,
-            ssh_password="2easy4me",
+            ssh_password=ssh_password,
             remote_bind_address=(sql_hostname, sql_port)) as tunnel:
         conn = pymysql.connect(host='127.0.0.1', user=sql_username,
                 passwd=sql_password, db=sql_main_database,
