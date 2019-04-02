@@ -42,10 +42,11 @@ with open(fname, "a") as f:
             conn = pymysql.connect(host='127.0.0.1', user=sql_username,
                     passwd=sql_password, db=sql_main_database,
                     port=tunnel.local_bind_port, autocommit=True)
-            #Sample ready query
+            #Sample read query
             query = "SELECT temperature1 from weatherdata;"
             data = pd.read_sql_query(query, conn)
             
+            #sample insert command
             insert_command = "INSERT INTO weatherdata VALUES({},{},{},{},{});".format(date, temperature1, \
                                         temperature2, pressure, humidity)
             cur = conn.cursor()
