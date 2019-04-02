@@ -12,17 +12,17 @@ import pymysql
 fname = "data.txt"
 time_interval = 1
 sql_hostname = 'mysql'
-sql_username = 'ankurmahesh'
+sql_username = 'hpeter'
 
 with open("sql_password") as f:
     sql_password = f.read()
 
 with open("ssh_password") as f:
     ssh_password = f.read()
-sql_main_database = 'ankurmahesh'
+sql_main_database = 'hpeter'
 sql_port = 3306
 ssh_host = 'ssh.ocf.berkeley.edu'
-ssh_user = 'ankurmahesh'
+ssh_user = 'hpeter'
 ssh_port = 22
 
 
