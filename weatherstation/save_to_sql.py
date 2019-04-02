@@ -13,6 +13,7 @@ fname = "data.txt"
 time_interval = 1
 sql_hostname = 'mysql'
 sql_username = 'ankurmahesh'
+#TODO: read the sql password from a local file instead of hardcoding the string
 sql_password = 'b1C4ZcoJR8lTXMm3EocB46ek'
 sql_main_database = 'ankurmahesh'
 sql_port = 3306
@@ -34,6 +35,7 @@ with open(fname, "a") as f:
         
 
         #TODO: it might be bad to open ssh connection once every time_interval seconds
+        #TODO: read the ssh password from a local file instead of hardcoding the string
         with SSHTunnelForwarder(
                 (ssh_host, ssh_port),
                 ssh_username=ssh_user,
