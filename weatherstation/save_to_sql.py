@@ -25,7 +25,6 @@ ssh_host = 'ssh.ocf.berkeley.edu'
 ssh_user = 'hpeter'
 ssh_port = 22
 
-
 while True:
     os.system("./read_sensors.py")
     
@@ -36,8 +35,7 @@ while True:
     humidity = output[3]
     
     current_date = dt.datetime.now()
-    date = current_date.strftime("%H%M%S")        
-    
+    date = current_date.strftime("%y%m%d%H%M%S")        
 
     #TODO: it might be bad to open ssh connection once every time_interval seconds
     with SSHTunnelForwarder(
@@ -60,5 +58,3 @@ while True:
         conn.close() 
 
     time.sleep(time_interval)
-
-
