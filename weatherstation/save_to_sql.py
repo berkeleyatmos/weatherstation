@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 import numpy as np
 import datetime as dt
 import os
@@ -35,7 +36,7 @@ while True:
     humidity = output[3]
     
     current_date = dt.datetime.now()
-    date = current_date.strftime("%y%m%d%H%M%S")        
+    date = current_date.strftime("%y-%m-%d %H:%M:%S")        
 
     #TODO: it might be bad to open ssh connection once every time_interval seconds
     with SSHTunnelForwarder(
@@ -51,10 +52,11 @@ while True:
         data = pd.read_sql_query(query, conn)
         
         #sample insert command
-        insert_command = "INSERT INTO weatherdata VALUES({},{},{},{},{});".format(date, temperature1, \
+        insert_command = "INSERT INTO weatherdata VALUES(\"{}\",{},{},{},{});".format(date, temperature1, \
                                     temperature2, pressure, humidity)
         cur = conn.cursor()
         cur.execute(insert_command)
         conn.close() 
 
     time.sleep(time_interval)
+    print("saved.")
