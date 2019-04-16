@@ -30,7 +30,7 @@ Here we will keep some notes for starting up a new pi (because presumably we wil
 Right now I will just post a few notes of things that are not obvious---later it will be more structured.
 
 1. For some reason, you have to do `sudo apt install libatlas-base-dev` for python3 numpy to work. Don't ask.
-2. Put `misc/atmos_startup_commands.sh` in `etc/init.d/`  #TODO: this did nothing... 
+2. Run `sudo systemctl enable pigpiod` so that the PiGPIO daemon starts on start-up.
 3. ...
 
 # To Do
