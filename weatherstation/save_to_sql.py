@@ -1,4 +1,5 @@
 #!/usr/bin/env python3 
+
 import numpy as np
 import datetime as dt
 import os
@@ -11,19 +12,20 @@ import pymysql
 
 
 fname = "data.txt"
-time_interval = 1
+time_interval = 15
 sql_hostname = 'mysql'
-sql_username = 'hpeter'
+sql_username = 'ankurmahesh'
 
 with open("sql_password") as f:
-    sql_password = f.read()
+    sql_password = f.read().replace("\n", "")
 
 with open("ssh_password") as f:
-    ssh_password = f.read()
-sql_main_database = 'hpeter'
+    ssh_password = f.read().replace("\n", "")
+
+sql_main_database = 'ankurmahesh'
 sql_port = 3306
 ssh_host = 'ssh.ocf.berkeley.edu'
-ssh_user = 'hpeter'
+ssh_user = 'ankurmahesh'
 ssh_port = 22
 
 while True:
@@ -47,10 +49,7 @@ while True:
         conn = pymysql.connect(host='127.0.0.1', user=sql_username,
                 passwd=sql_password, db=sql_main_database,
                 port=tunnel.local_bind_port, autocommit=True)
-        #Sample read query
-        query = "SELECT temperature1 from weatherdata;"
-        data = pd.read_sql_query(query, conn)
-        
+
         #sample insert command
         insert_command = "INSERT INTO weatherdata VALUES(\"{}\",{},{},{},{});".format(date, temperature1, \
                                     temperature2, pressure, humidity)
@@ -59,4 +58,5 @@ while True:
         conn.close() 
 
     time.sleep(time_interval)
-    print("saved.")
+
+    print(insert_command)
