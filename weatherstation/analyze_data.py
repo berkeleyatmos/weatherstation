@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 ################################################################################
 # Berkeley Atmos Club (ASAB) Weather Station Code
 # 

@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
 ################################################################################
 # Berkeley Atmos Club (ASAB) Weather Station Code
 # 
-# Here we will take the data from 'read_sensor.py' and upload to MySQL
+# Here we will take the data from 'read_sensors.py' and upload to MySQL
 ################################################################################
 
 import numpy as np
@@ -17,7 +15,7 @@ with open(fname, "a") as f:
     prev_temp2 = -999
     prev_humidity = -999
     while True:
-        os.system("./read_sensors.py")
+        os.system("python2 read_sensors.py")    # must use python2 because of older libraries
         
         output = np.loadtxt("current_measurements.txt")
         temperature1 = output[0]
