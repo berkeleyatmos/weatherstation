@@ -1,12 +1,12 @@
 # ASAB Weatherstation Guide
-Disclaimer: This guide is written by Henry, who mostly worked on software (and even then, most of this was done 2 years ago at the time of writing this). 
+Disclaimer: This guide is written by Henry Peterson, who mostly worked on software (and even then, most of this was done 2 years ago at the time of writing this). 
 It should be updated as new members go through it again.
 
 ## Hardware
 ### Sensors
-Currently, we have the DHT22 temperature and humidity sensor and the BME280 temperature and pressure sensor hooked up. 
+Currently, we have the [DHT22](https://www.adafruit.com/product/385) temperature and humidity sensor and the [BME280](https://www.adafruit.com/product/2652) temperature and pressure sensor hooked up. 
 The BME280 is superior to the DHT22 when it comes to temperature readings, so we opt to use that one in our data analysis.
-We followed [this](https://www.youtube.com/watch?v=IHTnU1T8ETk) guide to hook up the DHT22, using the `pigpio` method (see Software).
+We followed [this](https://www.youtube.com/watch?v=IHTnU1T8ETk) guide to hook up the DHT22, using the PiGPIO method (see Software).
 I don't remember how we did the BME280 sensor.
 Our current setup looks like this:
 
@@ -31,8 +31,8 @@ The default username and password is `pi` and `raspberry`, respectively.
 Change these as desired (just type `passwd` into a terminal).
 
 ### Update Software
-Raspbian uses the `apt` package manager to keep install, remove, and update software.
-You should do this regularly (especially on the first login!):
+Raspbian uses the `apt` package manager to install, remove, and update software.
+You should update software upon first logging in with
 ```
 apt update; apt upgrade
 ```
@@ -45,24 +45,25 @@ These are the packages and details I remember, but many things may be missing!
 If the network is giving you trouble, try installing the better network manager with `sudo apt install network-manager`.
 `sudo` just means you are doing something intense and need to provide the password. 
 If I recall, this was a major headache for me the first time, as I also had to disable the old network manager . . . Good luck!
+
 You're going to want a text editor that you can use in the terminal. 
 `nano` will work in a pinch, but I recommend `vim` for the long term.
 Open a terminal and install the packages you will need with, e.g. `sudo apt install vim`. 
 
 You will also need `pip`, the Python package manager, `sudo apt install python-pip python3-pip`.
-Also, we found that in order to have `numpy`, a Python package, work properly on a Raspberry Pi, we had to run `sudo apt install libatlas-base-dev`
+Also, we found that in order to have `numpy`, a Python package, work properly on a Raspberry Pi, we had to run `sudo apt install libatlas-base-dev`.
 
-Install `PiGPIO` as in the video above so that we can communicate with our sensors.
+Install PiGPIO as in the video above so that we can communicate with our sensors.
 Run `sudo systemctl enable pigpiod` so that the PiGPIO daemon starts on start-up.
 
-Next install `git` (`sudo apt install git`) and then this repository - finally!
+Next install `git` (with `sudo apt install git`) and then this repository - finally!
 Here is how `git` will roughly work:
 
 - Install the repo:
 ```
 git clone https://github.com/berkeleyatmos/weatherstation
 ```
-- Say you edit things in the repo. To save the changes, do
+- Say you edit things in the repo. To save the changes, do (while in the `weatherstation` folder)
 ```
 git add *
 git commit -m "we did things A, B, and C"
@@ -91,3 +92,11 @@ To access it remotely, we use `ssh`.
 Unfortunately, the station's IP address seems to change every few reboots when it is on Airbears2.
 This means we have to hook up the Pi to a monitor and check its IP manually: on the Pi, run `ifconfig` and look for the `inet` line under `wlan0` to get the IP.
 Then run `ssh pi@<ip_address>` on your own machine and you should be in (with the proper password).
+
+## WeatherWebsite
+We made a simple website to show weather data in real time for CalDay.
+The code used to log the data is in `weatherstation/save_to_sql.py`.
+It currently saves the data to Ankur Mahesh's OCF MySQL profile, and is processed by the website (code for that [here](https://github.com/berkeleyatmos/weatherwebsite)).
+You will need to add a `weatherstation/sql_password` and `weatherstation/ssh_password` file for the MySQL logging and SSH tunnelling to work.
+Contact Ankur if you lose those files, or host it on a new student's site (see [OCF's page](https://www.ocf.berkeley.edu/)).
+
