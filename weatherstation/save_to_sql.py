@@ -1,11 +1,8 @@
-#!/usr/bin/env python3 
-
 import numpy as np
 import datetime as dt
 import os
 import time
 import paramiko
-import pandas as pd
 from paramiko import SSHClient
 from sshtunnel import SSHTunnelForwarder
 import pymysql
@@ -29,7 +26,7 @@ ssh_user = 'ankurmahesh'
 ssh_port = 22
 
 while True:
-    os.system("./read_sensors.py")
+    os.system("python2 read_sensors.py")    # must use python2 due to older libraries
     
     output = np.loadtxt("current_measurements.txt")
     temperature1 = output[0]

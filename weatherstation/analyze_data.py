@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 ################################################################################
 # Berkeley Atmos Club (ASAB) Weather Station Code
 # 
@@ -14,8 +12,6 @@ time = data[:, 0]
 temp = data[:, 1]
 pres = data[:, 3]
 humi = data[:, 4]
-#pres = data[:, 2]
-#humi = data[:, 3]
 
 humi[np.where(humi == -999.0)] = np.nan
 
